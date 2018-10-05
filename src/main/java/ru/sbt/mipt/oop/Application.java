@@ -5,6 +5,7 @@ import ru.sbt.mipt.oop.event.LightsEventProcessor;
 import ru.sbt.mipt.oop.event.RandomSensorEventProvider;
 import ru.sbt.mipt.oop.event.SensorEvent;
 import ru.sbt.mipt.oop.model.SmartHome;
+import ru.sbt.mipt.oop.storage.FileSmartHomeStorage;
 
 import java.io.IOException;
 

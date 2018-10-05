@@ -1,6 +1,8 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.storage;
 
 import com.google.gson.Gson;
+import ru.sbt.mipt.oop.Application;
+import ru.sbt.mipt.oop.SmartHomeStorage;
 import ru.sbt.mipt.oop.model.SmartHome;
 
 import java.io.FileWriter;
