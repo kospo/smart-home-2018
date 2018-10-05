@@ -1,19 +1,29 @@
 package ru.sbt.mipt.oop;
 
+import ru.sbt.mipt.oop.event.DoorEventProcessor;
+import ru.sbt.mipt.oop.event.LightsEventProcessor;
+import ru.sbt.mipt.oop.event.RandomSensorEventProvider;
+import ru.sbt.mipt.oop.event.SensorEvent;
+import ru.sbt.mipt.oop.model.SmartHome;
+
 import java.io.IOException;
 
-import static ru.sbt.mipt.oop.SensorEventType.*;
+import static ru.sbt.mipt.oop.event.SensorEventType.*;
 
 public class Application {
+    private static SmartHomeStorage smartHomeStorage = new FileSmartHomeStorage();
+    private static SmartHome smartHome;
 
-    private static SmartHomeLoader smartHomeLoader = new FileSmartHomeLoader();
+    public static void setSmartHomeStorage(SmartHomeStorage smartHomeStorage) {
+        Application.smartHomeStorage = smartHomeStorage;
+    }
 
-    public static void setSmartHomeLoader(SmartHomeLoader smartHomeLoader) {
-        Application.smartHomeLoader = smartHomeLoader;
+    public static SmartHome getSmartHome() {
+        return smartHome;
     }
 
     public static void main(String... args) throws IOException {
-        SmartHome smartHome = smartHomeLoader.loadSmartHome();
+        smartHome = smartHomeStorage.loadSmartHome();
         runEventsCycle(smartHome);
     }
 

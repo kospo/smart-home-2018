@@ -1,6 +1,14 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.event;
 
-import static ru.sbt.mipt.oop.SensorEventType.DOOR_OPEN;
+import ru.sbt.mipt.oop.command.CommandType;
+import ru.sbt.mipt.oop.command.SensorCommand;
+import ru.sbt.mipt.oop.command.SensorCommandExecutor;
+import ru.sbt.mipt.oop.model.Door;
+import ru.sbt.mipt.oop.model.Light;
+import ru.sbt.mipt.oop.model.Room;
+import ru.sbt.mipt.oop.model.SmartHome;
+
+import static ru.sbt.mipt.oop.event.SensorEventType.DOOR_OPEN;
 
 public class DoorEventProcessor {
     public static void processDoorEvent(SmartHome smartHome, SensorEvent event) {

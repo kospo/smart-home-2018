@@ -1,6 +1,10 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.event;
 
-import static ru.sbt.mipt.oop.SensorEventType.LIGHT_ON;
+import ru.sbt.mipt.oop.model.Light;
+import ru.sbt.mipt.oop.model.Room;
+import ru.sbt.mipt.oop.model.SmartHome;
+
+import static ru.sbt.mipt.oop.event.SensorEventType.LIGHT_ON;
 
 public class LightsEventProcessor {
     public static void processLightEvent(SmartHome smartHome, SensorEvent event) {
