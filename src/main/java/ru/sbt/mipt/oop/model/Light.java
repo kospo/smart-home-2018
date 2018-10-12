@@ -1,6 +1,9 @@
 package ru.sbt.mipt.oop.model;
 
-public class Light {
+import java.util.Collection;
+import java.util.Collections;
+
+public class Light extends ASmartEntity implements SmartEntity {
     private boolean isOn;
     private final String id;
 
@@ -19,5 +22,10 @@ public class Light {
 
     public void setOn(boolean on) {
         isOn = on;
+    }
+
+    @Override
+    public Collection<SmartEntity> getChildren() {
+        return Collections.emptyList();
     }
 }

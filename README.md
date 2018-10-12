@@ -4,7 +4,7 @@ Project Smart Home implements 'smart home''.
 The house has sensors which are connected to a central server and send events in case of lights on/off doors open/close.
 The system receives events of type SensorEvent.
 <br/>
-SmartHome - the home itself, contains rooms<br/>
+SmartHome - the home itself, contains entities<br/>
 Room - room, contains doors and lights<br/>
 Door - door (interroom or entrance),<br/>
 Light - source of light (lighbulb and etc)<br/>

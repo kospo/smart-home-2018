@@ -1,6 +1,9 @@
 package ru.sbt.mipt.oop.model;
 
-public class Door {
+import java.util.Collection;
+import java.util.Collections;
+
+public class Door extends ASmartEntity implements SmartEntity {
     private final String id;
     private boolean isOpen;
 
@@ -15,5 +18,10 @@ public class Door {
 
     public void setOpen(boolean open) {
         isOpen = open;
+    }
+
+    @Override
+    public Collection<SmartEntity> getChildren() {
+        return Collections.emptyList();
     }
 }
