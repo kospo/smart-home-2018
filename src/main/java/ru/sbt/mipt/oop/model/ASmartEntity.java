@@ -1,7 +1,16 @@
 package ru.sbt.mipt.oop.model;
 
 public abstract class ASmartEntity implements SmartEntity {
+    protected final String id;
     protected transient SmartEntity parent;
+
+    protected ASmartEntity(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
 
     @Override
     public SmartEntity getParent() {

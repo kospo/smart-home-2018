@@ -1,4 +1,7 @@
-package ru.sbt.mipt.oop.event;
+package ru.sbt.mipt.oop.event.providers;
+
+import ru.sbt.mipt.oop.event.EventType;
+import ru.sbt.mipt.oop.event.SensorEvent;
 
 public class RandomSensorEventProvider {
     public static SensorEvent getNextSensorEvent() {
@@ -6,9 +9,9 @@ public class RandomSensorEventProvider {
         if (Math.random() < 0.05) {
             return null; // null means end of event stream
         }
-        SensorEventType sensorEventType = SensorEventType.values()[(int) (4 * Math.random())];
+        EventType eventType = EventType.values()[(int) (4 * Math.random())];
         String objectId = "" + ((int) (10 * Math.random()));
 
-        return new SensorEvent(sensorEventType, objectId);
+        return new SensorEvent(eventType, objectId);
     }
 }

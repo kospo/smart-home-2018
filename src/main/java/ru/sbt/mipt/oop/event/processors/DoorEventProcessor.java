@@ -1,15 +1,18 @@
-package ru.sbt.mipt.oop.event;
+package ru.sbt.mipt.oop.event.processors;
 
 import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.event.Event;
+import ru.sbt.mipt.oop.event.EventType;
+import ru.sbt.mipt.oop.event.SensorEvent;
 import ru.sbt.mipt.oop.model.Door;
 import ru.sbt.mipt.oop.model.SmartEntity;
 
-import static ru.sbt.mipt.oop.event.SensorEventType.DOOR_CLOSED;
-import static ru.sbt.mipt.oop.event.SensorEventType.DOOR_OPEN;
+import static ru.sbt.mipt.oop.event.EventType.DOOR_CLOSED;
+import static ru.sbt.mipt.oop.event.EventType.DOOR_OPEN;
 
 public class DoorEventProcessor implements EventProcessor {
     @Override
-    public void processEvent(SmartHome smartHome, SensorEvent event) {
+    public void processEvent(SmartHome smartHome, Event event) {
         if(!accepts(event.getType())) return;
 
         for (SmartEntity smartEntity : smartHome.getResidence()) {
@@ -30,7 +33,7 @@ public class DoorEventProcessor implements EventProcessor {
     }
 
     @Override
-    public boolean accepts(SensorEventType eventType) {
+    public boolean accepts(EventType eventType) {
         return eventType == DOOR_OPEN || eventType == DOOR_CLOSED;
     }
 }

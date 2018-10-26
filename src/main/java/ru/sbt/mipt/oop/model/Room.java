@@ -5,9 +5,9 @@ import java.util.*;
 public class Room extends ASmartEntity implements SmartEntity {
     private Collection<Light> lights;
     private Collection<Door> doors;
-    private String name;
 
     public Room(Collection<Light> lights, Collection<Door> doors, String name) {
+        super(name);
         this.lights = lights;
         for (Light light : lights) {
             light.parent = this;
@@ -16,7 +16,6 @@ public class Room extends ASmartEntity implements SmartEntity {
         for (Door door : doors) {
             door.parent = this;
         }
-        this.name = name;
     }
 
     public Collection<Light> getLights() {
@@ -25,10 +24,6 @@ public class Room extends ASmartEntity implements SmartEntity {
 
     public Collection<Door> getDoors() {
         return doors;
-    }
-
-    public String getName() {
-        return name;
     }
 
     @Override

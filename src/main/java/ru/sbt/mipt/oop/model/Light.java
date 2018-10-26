@@ -8,6 +8,7 @@ public class Light extends ASmartEntity implements SmartEntity {
     private final String id;
 
     public Light(String id, boolean isOn) {
+        super(id);
         this.id = id;
         this.isOn = isOn;
     }

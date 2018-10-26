@@ -1,7 +1,11 @@
 package ru.sbt.mipt.oop.event;
 
-import ru.sbt.mipt.oop.Application;
 import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.event.processors.DoorEventProcessor;
+import ru.sbt.mipt.oop.event.processors.EventProcessor;
+import ru.sbt.mipt.oop.event.processors.HallDoorEventProcessor;
+import ru.sbt.mipt.oop.event.processors.LightsEventProcessor;
+import ru.sbt.mipt.oop.event.providers.RandomSensorEventProvider;
 
 import java.util.Arrays;
 import java.util.List;

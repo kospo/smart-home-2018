@@ -8,6 +8,7 @@ public interface SmartEntity extends Iterable<SmartEntity> {
     }
 
     SmartEntity getParent();
+    String getId();
 
     @Override
     default Iterator<SmartEntity> iterator() {
