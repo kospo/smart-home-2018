@@ -1,14 +1,13 @@
-package ru.sbt.mipt.oop.model;
+package ru.sbt.mipt.oop.entity;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class House extends ASmartEntity implements SmartEntity {
     private final Collection<Room> rooms;
 
-    public House(Collection<Room> rooms, String name) {
+    public House(String name, Collection<Room> rooms) {
         super(name);
+
         this.rooms = rooms;
         for (Room room : rooms) {
             room.parent = this;
@@ -25,9 +24,6 @@ public class House extends ASmartEntity implements SmartEntity {
 
     @Override
     public Collection<SmartEntity> getChildren() {
-        List<SmartEntity> ret = new ArrayList<>();
-        ret.addAll(rooms);
-
-        return ret;
+        return new LinkedHashSet<>(rooms);
     }
 }

@@ -1,8 +1,8 @@
-package ru.sbt.mipt.oop.model;
+package ru.sbt.mipt.oop.entity;
 
 public abstract class ASmartEntity implements SmartEntity {
     protected final String id;
-    protected transient SmartEntity parent;
+    protected SmartEntity parent;
 
     protected ASmartEntity(String id) {
         this.id = id;

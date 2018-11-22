@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop.model.alarm;
+package ru.sbt.mipt.oop.entity.alarm.state;
 
 public class AlarmStateArmed implements AlarmState {
     @Override

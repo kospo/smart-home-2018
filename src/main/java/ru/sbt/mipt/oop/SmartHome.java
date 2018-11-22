@@ -3,12 +3,9 @@ package ru.sbt.mipt.oop;
 import ru.sbt.mipt.oop.command.CommandType;
 import ru.sbt.mipt.oop.command.SensorCommand;
 import ru.sbt.mipt.oop.command.SensorCommandExecutor;
-import ru.sbt.mipt.oop.model.Light;
-import ru.sbt.mipt.oop.model.Room;
-import ru.sbt.mipt.oop.model.SmartEntity;
-
-import java.util.ArrayList;
-import java.util.Collection;
+import ru.sbt.mipt.oop.entity.Light;
+import ru.sbt.mipt.oop.entity.Room;
+import ru.sbt.mipt.oop.entity.SmartEntity;
 
 public class SmartHome {
     private final SmartEntity residence;

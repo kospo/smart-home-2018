@@ -2,7 +2,10 @@ package ru.sbt.mipt.oop;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import ru.sbt.mipt.oop.model.*;
+import ru.sbt.mipt.oop.entity.Door;
+import ru.sbt.mipt.oop.entity.House;
+import ru.sbt.mipt.oop.entity.Light;
+import ru.sbt.mipt.oop.entity.Room;
 import ru.sbt.mipt.oop.storage.FileSmartHomeStorage;
 
 import java.io.BufferedWriter;
@@ -16,43 +19,44 @@ public class HomeBuilder {
 
     public static void main(String[] args) throws IOException {
         Room kitchen = new Room(
+                "kitchen",
                 Arrays.asList(
                         new Light("1", false),
                         new Light("2", true)
                 ),
                 Arrays.asList(
-                        new Door(false, "1")
-                ),
-                "kitchen");
+                        new Door("1", false)
+                ));
         Room bathroom = new Room(
+                "bathroom",
                 Arrays.asList(
                         new Light("3", true)
                 ),
                 Arrays.asList(
-                        new Door(false, "2")
-                ),
-                "bathroom");
+                        new Door("2", false)
+                ));
         Room bedroom = new Room(
+                "bedroom",
                 Arrays.asList(
                         new Light("4", false),
                         new Light("5", false),
                         new Light("6", false)
                 ),
                 Arrays.asList(
-                        new Door(true, "3")
-                ),
-                "bedroom");
+                        new Door("3", true)
+                ));
         Room hall = new Room(
+                "hall",
                 Arrays.asList(
                         new Light("7", false),
                         new Light("8", false),
                         new Light("9", false)
                 ),
                 Arrays.asList(
-                        new Door(false, "4")
-                ), "hall"
+                        new Door("4", false)
+                )
         );
-        House mansion = new House(Arrays.asList(kitchen, bathroom, bedroom, hall), "mansion");
+        House mansion = new House("mansion", Arrays.asList(kitchen, bathroom, bedroom, hall));
 
         System.out.println(mansion);
 

@@ -1,6 +1,6 @@
-package ru.sbt.mipt.oop.model.alarm;
+package ru.sbt.mipt.oop.entity.alarm.state;
 
-public class AlarmStateOff implements AlarmState {
+public class AlarmStateDisarmed implements AlarmState {
     @Override
     public boolean activate() {
         return true;
