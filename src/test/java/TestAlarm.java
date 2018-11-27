@@ -1,8 +1,8 @@
 import org.junit.Test;
-import ru.sbt.mipt.oop.entity.alarm.Alarm;
-import ru.sbt.mipt.oop.entity.alarm.state.AlarmStateArmed;
-import ru.sbt.mipt.oop.entity.alarm.state.AlarmStateDisarmed;
-import ru.sbt.mipt.oop.entity.alarm.state.AlarmStateTriggered;
+import me.kospo.smarthome.entity.alarm.Alarm;
+import me.kospo.smarthome.entity.alarm.state.AlarmStateArmed;
+import me.kospo.smarthome.entity.alarm.state.AlarmStateDisarmed;
+import me.kospo.smarthome.entity.alarm.state.AlarmStateTriggered;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -12,29 +12,29 @@ public class TestAlarm {
 
     @Test
     public void testOff() {
-        Alarm a = new Alarm(CODE);
+        Alarm a = new Alarm(Alarm.MAIN_ALARM_ID, CODE);
 
-        assertTrue(a.getState() instanceof AlarmStateDisarmed);
+        assertTrue(a.isDisarmed());
         assertFalse(a.trigger());
-        assertTrue(a.getState() instanceof AlarmStateDisarmed);
+        assertTrue(a.isDisarmed());
         assertFalse(a.arm(CODE + 1));
-        assertTrue(a.getState() instanceof AlarmStateDisarmed);
+        assertTrue(a.isDisarmed());
         assertTrue(a.arm(CODE));
-        assertTrue(a.getState() instanceof AlarmStateArmed);
+        assertTrue(a.isArmed());
     }
 
     @Test
     public void testOn() {
-        Alarm a = new Alarm(CODE);
+        Alarm a = new Alarm(Alarm.MAIN_ALARM_ID, CODE);
 
-        assertTrue(a.getState() instanceof AlarmStateDisarmed);
+        assertTrue(a.isDisarmed());
         assertTrue(a.arm(CODE));
-        assertTrue(a.getState() instanceof AlarmStateArmed);
+        assertTrue(a.isArmed());
         assertFalse(a.disarm(CODE + 1));
-        assertTrue(a.getState() instanceof AlarmStateTriggered);
+        assertTrue(a.isTriggered());
         assertFalse(a.disarm(CODE + 1));
-        assertTrue(a.getState() instanceof AlarmStateTriggered);
+        assertTrue(a.isTriggered());
         assertTrue(a.disarm(CODE));
-        assertTrue(a.getState() instanceof AlarmStateDisarmed);
+        assertTrue(a.isDisarmed());
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class SensorEventsManager {
-    private final String[] eventTypes = new String[] { "LightIsOn", "LightIsOff", "DoorIsOpen", "DoorIsClosed", "DoorIsLocked", "DoorIsUnlocked" };
+    private final String[] eventTypes = new String[]{"LightIsOn", "LightIsOff", "DoorIsOpen", "DoorIsClosed", "DoorIsLocked", "DoorIsUnlocked"};
 
     private Collection<EventHandler> handlers = new ArrayList<>();
 
@@ -27,6 +27,7 @@ public class SensorEventsManager {
         if (Math.random() < 0.05) return null; // null means end of event stream
         String sensorEventType = eventTypes[(int) (6 * Math.random())];
         String objectId = "" + ((int) (10 * Math.random()));
+
         return new CCSensorEvent(sensorEventType, objectId);
     }
 
