@@ -34,10 +34,6 @@ public class Alarm extends ASmartEntity implements SmartEntity {
         if(state.arm()) {
             state = new AlarmStateArmed();
 
-            //todo: move?
-            SensorCommand cmd = new SensorCommand(CommandType.ALARM_ARM, id);
-            SensorCommandExecutor.executeCommand(cmd);
-
             return true;
         }
 
@@ -53,10 +49,6 @@ public class Alarm extends ASmartEntity implements SmartEntity {
         if(state.disarm()) {
             state = new AlarmStateDisarmed();
 
-            //todo: move?
-            SensorCommand cmd = new SensorCommand(CommandType.ALARM_DISARM, id);
-            SensorCommandExecutor.executeCommand(cmd);
-
             return true;
         }
 
@@ -66,10 +58,6 @@ public class Alarm extends ASmartEntity implements SmartEntity {
         if(state.trigger()) {
             if(!isTriggered()) {
                 state = new AlarmStateTriggered();
-
-                //todo: move?
-                SensorCommand cmd = new SensorCommand(CommandType.ALARM_TRIGGER, id);
-                SensorCommandExecutor.executeCommand(cmd);
             }
 
             return true;

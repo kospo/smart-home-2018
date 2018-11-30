@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import me.kospo.smarthome.SmartHome;
 import me.kospo.smarthome.Application;
+import me.kospo.smarthome.entity.House;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -13,13 +15,20 @@ import java.nio.file.Paths;
 public class FileSmartHomeStorage implements SmartHomeStorage {
     private static final Gson gsonRead = new Gson();
     private static final Gson gsonWrite = new GsonBuilder().setPrettyPrinting().create();
-    public static final String fileStr = "./smart-home-1.js";
+    public final String fileStr;
+
+    //"./smart-home-1.js"
+    public FileSmartHomeStorage(String fileStr) {
+        this.fileStr = fileStr;
+    }
 
     @Override
     public SmartHome loadSmartHome() throws IOException {
         String json = new String(Files.readAllBytes(Paths.get(fileStr)));
 
-        return gsonRead.fromJson(json, SmartHome.class);
+        House house = gsonRead.fromJson(json, House.class);
+
+        return new SmartHome(house);
     }
 
     @Override

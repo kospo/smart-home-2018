@@ -6,10 +6,10 @@ import java.util.function.Consumer;
 public interface SmartEntity {
     String getId();
     SmartEntity getParent();
-    default void applyRecursive(Consumer<SmartEntity> c) {
-        c.accept(this);
+    default void applyRecursive(Consumer<SmartEntity> func) {
+        func.accept(this);
         for (SmartEntity child : getChildren()) {
-            c.accept(child);
+            child.applyRecursive(func);
         }
     }
 

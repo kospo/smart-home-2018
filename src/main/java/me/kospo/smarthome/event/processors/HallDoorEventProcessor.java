@@ -1,6 +1,7 @@
 package me.kospo.smarthome.event.processors;
 
 import me.kospo.smarthome.SmartHome;
+import me.kospo.smarthome.action.impl.LightsOffAction;
 import me.kospo.smarthome.entity.Door;
 import me.kospo.smarthome.entity.Room;
 import me.kospo.smarthome.event.Event;
@@ -18,8 +19,7 @@ public class HallDoorEventProcessor extends AEventProcessor implements EventProc
         Room room = (Room)door.getParent();
 
         if (room.getId().equals(Room.HALL_ID)) {
-            
-            smartHome.turnLightsOff(room);
+            new LightsOffAction(smartHome).perform();
         }
     }
 }

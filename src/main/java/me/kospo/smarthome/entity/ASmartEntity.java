@@ -24,4 +24,12 @@ public abstract class ASmartEntity implements SmartEntity {
 //                "children=" + getChildren() + "\n" +
                 '}';
     }
+
+//    @Override
+//    public void fillParents() {
+//        for (SmartEntity child : this.getChildren()) {
+//            child.parent = this;
+//            child.fillParents();
+//        }
+//    }
 }

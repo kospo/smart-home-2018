@@ -1,3 +1,5 @@
+package me.kospo.smarthome;
+
 import org.junit.Test;
 import me.kospo.smarthome.event.HomeEventsObserver;
 

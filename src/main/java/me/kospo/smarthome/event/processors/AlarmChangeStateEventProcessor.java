@@ -3,7 +3,7 @@ package me.kospo.smarthome.event.processors;
 import me.kospo.smarthome.SmartHome;
 import me.kospo.smarthome.entity.alarm.Alarm;
 import me.kospo.smarthome.event.Event;
-import me.kospo.smarthome.event.alarm.AlarmEvent;
+import me.kospo.smarthome.event.specific.alarm.AlarmEvent;
 
 import static me.kospo.smarthome.event.EventType.*;
 

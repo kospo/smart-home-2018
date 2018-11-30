@@ -5,9 +5,10 @@ import com.coolcompany.smarthome.remote.RemoteControlButton;
 import com.coolcompany.smarthome.remote.RemoteControlRegistry;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class RemoteControlRegistryImpl implements RemoteControlRegistry {
-    private final HashMap<String, RemoteControl> registry = new HashMap<>();
+    protected final Map<String, RemoteControl> registry = new HashMap<>();
 
     @Override
     public void registerRemoteControl(RemoteControl remoteControl, String rcId) {

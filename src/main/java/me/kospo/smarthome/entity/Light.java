@@ -21,11 +21,6 @@ public class Light extends ASmartEntity implements SmartEntity {
     }
     public void setOn(boolean on) {
         this.on = on;
-
-        //todo: move?
-        CommandType commandType = on? CommandType.LIGHT_ON : CommandType.LIGHT_OFF;
-        SensorCommand cmd = new SensorCommand(commandType, id);
-        SensorCommandExecutor.executeCommand(cmd);
     }
 
     @Override

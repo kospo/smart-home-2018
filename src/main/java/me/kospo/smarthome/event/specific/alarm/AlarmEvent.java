@@ -1,7 +1,7 @@
-package me.kospo.smarthome.event.alarm;
+package me.kospo.smarthome.event.specific.alarm;
 
 import me.kospo.smarthome.event.EventType;
-import me.kospo.smarthome.event.SensorEvent;
+import me.kospo.smarthome.event.specific.SensorEvent;
 
 public class AlarmEvent extends SensorEvent {
     private final int code;

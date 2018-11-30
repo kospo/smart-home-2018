@@ -2,7 +2,7 @@ package me.kospo.smarthome.event.providers;
 
 import me.kospo.smarthome.event.Event;
 import me.kospo.smarthome.event.EventType;
-import me.kospo.smarthome.event.SensorEvent;
+import me.kospo.smarthome.event.specific.SensorEvent;
 
 public class RandomSensorEventProvider {
     public static Event getNextSensorEvent() {

@@ -1,4 +1,4 @@
-package me.kospo.smarthome.event.alarm;
+package me.kospo.smarthome.event.specific.alarm;
 
 import me.kospo.smarthome.event.EventType;
 

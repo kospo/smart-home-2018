@@ -1,13 +1,13 @@
 package me.kospo.smarthome.storage;
 
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import me.kospo.smarthome.SmartHome;
 import me.kospo.smarthome.entity.Door;
 import me.kospo.smarthome.entity.House;
 import me.kospo.smarthome.entity.Light;
 import me.kospo.smarthome.entity.Room;
-import me.kospo.smarthome.storage.FileSmartHomeStorage;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-public class HomeBuilder {
+public class HouseBuilder {
 
     public static void main(String[] args) throws IOException {
         Room kitchen = new Room(
@@ -58,12 +58,17 @@ public class HomeBuilder {
                 )
         );
         House mansion = new House("mansion", Arrays.asList(kitchen, bathroom, bedroom, hall));
+//        SmartHome smartHome = new SmartHome(mansion);
 
-        System.out.println(mansion);
+        Gson gson = new GsonBuilder()
+                .setExclusionStrategies(new MyExclusionStrategy())
+                //.serializeNulls()
+                .create();
 
-        SmartHome smartHome = new SmartHome(mansion);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String jsonString = gson.toJson(smartHome);
+//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonString = gson.toJson(mansion);
+        System.out.println(jsonString);
+
 //        System.out.println(jsonString);
 
 //        System.out.println("START");
@@ -72,9 +77,20 @@ public class HomeBuilder {
 //        }
 //        System.out.println("END");
 
-        Path path = Paths.get(FileSmartHomeStorage.fileStr);
+        String fileStr = "./smart-home-1.js";
+        Path path = Paths.get(fileStr);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             writer.write(jsonString);
+        }
+    }
+
+    public static class MyExclusionStrategy implements ExclusionStrategy {
+        public boolean shouldSkipClass(Class<?> arg0) {
+            return false;
+        }
+
+        public boolean shouldSkipField(FieldAttributes f) {
+            return f.getName().equals("parent");
         }
     }
 

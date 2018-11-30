@@ -3,6 +3,7 @@ package me.kospo.smarthome.event;
 import com.coolcompany.smarthome.events.CCSensorEvent;
 import me.kospo.smarthome.SmartHome;
 import me.kospo.smarthome.event.processors.EventProcessor;
+import me.kospo.smarthome.event.specific.SensorEvent;
 
 import java.util.HashMap;
 import java.util.Map;

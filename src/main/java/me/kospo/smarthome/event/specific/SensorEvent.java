@@ -1,4 +1,7 @@
-package me.kospo.smarthome.event;
+package me.kospo.smarthome.event.specific;
+
+import me.kospo.smarthome.event.Event;
+import me.kospo.smarthome.event.EventType;
 
 public class SensorEvent implements Event {
     private final EventType type;

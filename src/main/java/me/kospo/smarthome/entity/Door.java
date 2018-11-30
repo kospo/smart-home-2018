@@ -23,11 +23,6 @@ public class Door extends ASmartEntity implements SmartEntity {
     }
     public void setOpened(boolean opened) {
         this.opened = opened;
-
-        //todo: move?
-        CommandType commandType = opened? CommandType.DOOR_OPEN : CommandType.DOOR_CLOSE;
-        SensorCommand cmd = new SensorCommand(commandType, id);
-        SensorCommandExecutor.executeCommand(cmd);
     }
 
     @Override

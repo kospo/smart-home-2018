@@ -6,7 +6,7 @@ import me.kospo.smarthome.entity.Light;
 
 public class LightsOffAction extends SmartAction {
     public LightsOffAction(SmartHome smartHome) {
-        super( () -> {
+        super(() -> {
             smartHome.getResidence().applyRecursive(smartEntity -> {
                 if (smartEntity instanceof Light) {
                     Light light = (Light) smartEntity;
