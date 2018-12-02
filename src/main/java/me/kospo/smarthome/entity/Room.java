@@ -13,14 +13,7 @@ public class Room extends ASmartEntity implements SmartEntity {
         super(name);
 
         this.lights = lights;
-        for (Light light : lights) {
-            light.parent = this;
-        }
-
         this.doors = doors;
-        for (Door door : doors) {
-            door.parent = this;
-        }
     }
 
     public Collection<Light> getLights() {

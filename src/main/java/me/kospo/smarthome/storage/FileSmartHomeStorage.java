@@ -17,7 +17,6 @@ public class FileSmartHomeStorage implements SmartHomeStorage {
     private static final Gson gsonWrite = new GsonBuilder().setPrettyPrinting().create();
     public final String fileStr;
 
-    //"./smart-home-1.js"
     public FileSmartHomeStorage(String fileStr) {
         this.fileStr = fileStr;
     }

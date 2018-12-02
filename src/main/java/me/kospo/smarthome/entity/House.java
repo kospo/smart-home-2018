@@ -1,17 +1,18 @@
 package me.kospo.smarthome.entity;
 
+import me.kospo.smarthome.entity.alarm.Alarm;
+
 import java.util.*;
 
 public class House extends ASmartEntity implements SmartEntity {
     private final Collection<Room> rooms;
+    private final Alarm alarm;
 
-    public House(String name, Collection<Room> rooms) {
+    public House(String name, Collection<Room> rooms, Alarm alarm) {
         super(name);
 
         this.rooms = rooms;
-        for (Room room : rooms) {
-            room.parent = this;
-        }
+        this.alarm = alarm;
     }
 
     public void addRoom(Room room) {
@@ -25,5 +26,9 @@ public class House extends ASmartEntity implements SmartEntity {
     @Override
     public Collection<SmartEntity> getChildren() {
         return new LinkedHashSet<>(rooms);
+    }
+
+    public Alarm getAlarm() {
+        return alarm;
     }
 }

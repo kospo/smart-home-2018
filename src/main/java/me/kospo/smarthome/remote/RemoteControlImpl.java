@@ -5,12 +5,15 @@ import com.coolcompany.smarthome.remote.RemoteControlButton;
 import me.kospo.smarthome.action.RevertibleAction;
 import me.kospo.smarthome.action.SmartAction;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RemoteControlImpl implements RemoteControl {
+public class RemoteControlImpl implements RemoteControl, AdvancedRemoteControl {
     private final String id;
     private final Map<RemoteControlButton, SmartAction> binds = new HashMap<>();
+    private final Deque<RevertibleAction> history = new ArrayDeque<>();
 
     public RemoteControlImpl(String id) {
         this.id = id;
@@ -42,6 +45,22 @@ public class RemoteControlImpl implements RemoteControl {
 
         if(action != null) {
             action.perform();
+            if(action instanceof RevertibleAction) {
+                history.addLast((RevertibleAction) action);
+            }
         }
+    }
+
+    @Override
+    public boolean undoLastAction() {
+        RevertibleAction lastAction = history.peekLast();
+        if(lastAction != null) {
+            lastAction.unperform();
+            history.removeLast();
+
+            return true;
+        }
+
+        return false;
     }
 }

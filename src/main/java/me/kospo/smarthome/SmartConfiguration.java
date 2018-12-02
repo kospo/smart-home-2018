@@ -5,17 +5,11 @@ import me.kospo.smarthome.event.HomeEventsObserver;
 import me.kospo.smarthome.storage.FileSmartHomeStorage;
 import me.kospo.smarthome.storage.SmartHomeStorage;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
 @Configuration
-//@ComponentScan("me.kospo.smarthome.storage")
-//@ComponentScan(
-//        "me.kospo.smarthome"
-//)
 public class SmartConfiguration {
     @Bean
     public HomeEventsObserver getHomeEventsObserver(SmartHome smartHome) {

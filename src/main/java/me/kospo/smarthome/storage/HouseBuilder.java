@@ -8,6 +8,7 @@ import me.kospo.smarthome.entity.Door;
 import me.kospo.smarthome.entity.House;
 import me.kospo.smarthome.entity.Light;
 import me.kospo.smarthome.entity.Room;
+import me.kospo.smarthome.entity.alarm.Alarm;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -57,25 +58,14 @@ public class HouseBuilder {
                         new Door("4", false)
                 )
         );
-        House mansion = new House("mansion", Arrays.asList(kitchen, bathroom, bedroom, hall));
-//        SmartHome smartHome = new SmartHome(mansion);
+        Alarm alarm = new Alarm("alarm", 123);
+        House mansion = new House("mansion", Arrays.asList(kitchen, bathroom, bedroom, hall), alarm);
 
         Gson gson = new GsonBuilder()
-                .setExclusionStrategies(new MyExclusionStrategy())
-                //.serializeNulls()
                 .create();
 
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonString = gson.toJson(mansion);
         System.out.println(jsonString);
-
-//        System.out.println(jsonString);
-
-//        System.out.println("START");
-//        for (SmartEntity smartEntity : smartHome.getResidence()) {
-//            System.out.println(smartEntity);
-//        }
-//        System.out.println("END");
 
         String fileStr = "./smart-home-1.js";
         Path path = Paths.get(fileStr);
@@ -83,15 +73,4 @@ public class HouseBuilder {
             writer.write(jsonString);
         }
     }
-
-    public static class MyExclusionStrategy implements ExclusionStrategy {
-        public boolean shouldSkipClass(Class<?> arg0) {
-            return false;
-        }
-
-        public boolean shouldSkipField(FieldAttributes f) {
-            return f.getName().equals("parent");
-        }
-    }
-
 }

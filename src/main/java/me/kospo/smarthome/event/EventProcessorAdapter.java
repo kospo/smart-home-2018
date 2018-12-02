@@ -16,7 +16,7 @@ public class EventProcessorAdapter {
         map.put("LightIsOff", EventType.LIGHT_OFF);
         map.put("DoorIsOpen", EventType.DOOR_OPEN);
         map.put("DoorIsClosed", EventType.DOOR_CLOSE);
-        map.put("DoorIsLocked", EventType.DOOR_LOCK);
+        map.put("DoorIsLocked", EventType.DOOR_LOCKED);
         map.put("DoorIsUnlocked", EventType.DOOR_UNLOCK);
     }
 

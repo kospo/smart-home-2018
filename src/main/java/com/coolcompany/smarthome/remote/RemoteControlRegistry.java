@@ -1,9 +1,11 @@
 package com.coolcompany.smarthome.remote;
 
-public interface RemoteControlRegistry {
-    //todo: remove rcId?
-    void registerRemoteControl(RemoteControl remoteControl, String rcId);
+public class RemoteControlRegistry {
+    public static void registerRemoteControl(RemoteControl remoteControl, String rcId) {
+        //impl
+    }
 
-    //api fix
-    void onButtonPressed(String rcId, RemoteControlButton remoteControlButton);
+    public static void startRemoteControlEventsCycle() {
+        //impl
+    }
 }

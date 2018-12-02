@@ -1,6 +1,8 @@
 package me.kospo.smarthome.event.processors;
 
 import me.kospo.smarthome.SmartHome;
+import me.kospo.smarthome.action.impl.AlarmArmAction;
+import me.kospo.smarthome.action.impl.AlarmTriggerAction;
 import me.kospo.smarthome.entity.alarm.Alarm;
 import me.kospo.smarthome.event.Event;
 import me.kospo.smarthome.event.EventType;
@@ -17,13 +19,16 @@ public class AlarmAwareEventProcessor extends AEventProcessor implements EventPr
 
     @Override
     protected void processEvent0(SmartHome smartHome, Event event) {
-        SmartEntity e = smartHome.getResidence().getChild(event.getObjectId(), SmartEntity.class);
-        Alarm alarm = Alarm.getAlarmFor(e);
+        Alarm alarm = smartHome.getAlarm();
 
-        if(alarm == null || !alarm.isTriggered()) {
+        if(alarm == null || alarm.isDisarmed()) {
             handler.processEvent(smartHome, event);
-        } else {
-            System.out.println("sending alarm sms");
+            return;
+        } else if(alarm.isArmed()) {
+            new AlarmTriggerAction(smartHome).perform();
+            alarm.trigger();
         }
+
+        System.out.println("sending alarm sms");
     }
 }
