@@ -3,12 +3,15 @@ package me.kospo.smarthome.entity.alarm;
 import me.kospo.smarthome.entity.ASmartEntity;
 import me.kospo.smarthome.entity.SmartEntity;
 import me.kospo.smarthome.entity.alarm.state.AlarmState;
+import me.kospo.smarthome.entity.alarm.state.AlarmStateArmed;
+import me.kospo.smarthome.entity.alarm.state.AlarmStateDisarmed;
+import me.kospo.smarthome.entity.alarm.state.AlarmStateTriggered;
 
 import java.util.Collection;
 import java.util.Collections;
 
 public class Alarm extends ASmartEntity implements SmartEntity {
-    public static final String MAIN_ALARM_ID = "theAlarm";
+    public static final String MAIN_ALARM_ID = "the_alarm";
 
     private final int code;
     private AlarmState state;
@@ -17,69 +20,39 @@ public class Alarm extends ASmartEntity implements SmartEntity {
         super(id);
 
         this.code = code;
-        this.state = AlarmState.DISARMED; //new AlarmStateDisarmed();
+        this.state = new AlarmStateDisarmed(this);
     }
 
-    public boolean arm(int c) {
-        if(c != code) {
-            return false;
-        }
-
-        if(state.arm()) {
-            state = AlarmState.ARMED; //new AlarmStateArmed();
-
-            return true;
-        }
-
-        return false;
+    public void arm(int c) {
+        state.arm(c);
     }
-    public boolean disarm(int c) {
-        if(c != code) {
-            trigger();
-
-            return false;
-        }
-
-        if(state.disarm()) {
-            state = AlarmState.DISARMED; //new AlarmStateDisarmed();
-
-            return true;
-        }
-
-        return false;
+    public void disarm(int c) {
+        state.disarm(c);
     }
-    public boolean trigger() {
-        if(state.trigger()) {
-            if(!isTriggered()) {
-                state = AlarmState.TRIGGERED; 
-            }
-
-            return true;
-        }
-
-        return false;
+    public void trigger() {
+        state.trigger();
     }
 
     public boolean isArmed() {
-        return state == AlarmState.ARMED; 
+        return state instanceof AlarmStateArmed;
     }
     public boolean isDisarmed() {
-        return state == AlarmState.DISARMED; 
+        return state instanceof AlarmStateDisarmed;
     }
     public boolean isTriggered() {
-        return state == AlarmState.TRIGGERED; 
+        return state instanceof AlarmStateTriggered;
     }
 
     public int getCode() {
         return code;
     }
 
-    public AlarmState getState() {
-        return state;
-    }
-
     @Override
     public Collection<SmartEntity> getChildren() {
         return Collections.emptySet();
+    }
+
+    public void setState(AlarmState state) {
+        this.state = state;
     }
 }
