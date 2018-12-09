@@ -9,6 +9,4 @@ public interface AdvancedRemoteControl {
     SmartAction getBind(RemoteControlButton button);
     SmartAction bind(RemoteControlButton button, SmartAction command);
     SmartAction unbind(RemoteControlButton button);
-
-    boolean undoLastAction();
 }

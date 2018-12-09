@@ -1,7 +1,5 @@
 package me.kospo.smarthome.action;
 
-import me.kospo.smarthome.SmartHome;
-
 public class SmartAction {
     private final Runnable action;
 

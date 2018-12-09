@@ -58,8 +58,8 @@ public class HouseBuilder {
                         new Door("4", false)
                 )
         );
-        Alarm alarm = new Alarm("alarm", 123);
-        House mansion = new House("mansion", Arrays.asList(kitchen, bathroom, bedroom, hall), alarm);
+//        Alarm alarm = new Alarm("alarm", 123);
+        House mansion = new House("mansion", Arrays.asList(kitchen, bathroom, bedroom, hall), null);
 
         Gson gson = new GsonBuilder()
                 .create();

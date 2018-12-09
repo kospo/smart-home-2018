@@ -2,7 +2,6 @@ package me.kospo.smarthome.entity;
 
 public abstract class ASmartEntity implements SmartEntity {
     protected final String id;
-//    protected SmartEntity parent;
 
     protected ASmartEntity(String id) {
         this.id = id;
